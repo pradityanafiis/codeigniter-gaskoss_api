@@ -112,7 +112,7 @@ class Penginapan extends CI_Controller {
                 $this->response([
                     'status' => FALSE,
                     'message' => 'Gagal, ID penginapan tidak ditemukan.'
-                ]);
+                ], 400);
             }
         }
     }

@@ -1,15 +1,15 @@
 <?php
 
-class Model_kamar extends CI_Model {
+class Model_Kamar extends CI_Model {
     
-    public function getPenginapan($idpenginapan = null, $iduser = null)
+    public function getKamar($idkamar = null, $idpenginapan = null)
     {
-        if ($idpenginapan != null) {
-            return $this->db->get_where('penginapan', ['IDPENGINAPAN' => $idpenginapan])->result_array();
-        } elseif ($iduser != null) {
-            return $this->db->get_where('penginapan', ['IDUSER' => $iduser])->result_array();
+        if ($idkamar != null) {
+            return $this->db->get_where('kamar', ['IDKAMAR' => $idkamar])->result_array();
+        } elseif ($idpenginapan != null) {
+            return $this->db->get_where('kamar', ['IDPENGINAPAN' => $idpenginapan])->result_array();
         } else {
-            return $this->db->get('penginapan')->result_array();
+            return $this->db->get('kamar')->result_array();
         }
     }
 
@@ -19,15 +19,15 @@ class Model_kamar extends CI_Model {
         return $this->db->affected_rows();
     }
 
-    public function updatePenginapan($datapenginapan, $idpenginapan)
+    public function updateKamar($datakamar, $idkamar)
     {
-        $this->db->update('penginapan', $datapenginapan, ['IDPENGINAPAN' => $idpenginapan]);
+        $this->db->update('kamar', $datakamar, ['IDKAMAR' => $idkamar]);
         return $this->db->affected_rows();
     }
 
-    public function deletePenginapan($idpenginapan)
+    public function deleteKamar($idkamar)
     {
-        $this->db->delete('penginapan', ['IDPENGINAPAN' => $idpenginapan]);
+        $this->db->delete('kamar', ['IDKAMAR' => $idkamar]);
         return $this->db->affected_rows();
     }
 }

@@ -30,7 +30,18 @@ class Kamar extends CI_Controller {
         } else {
             $datakamar = $this->kamar->getKamar();
         }
-        
+
+        if ($datakamar) {
+            $this->response([
+                'status' => TRUE,
+                'data' => $datakamar
+            ], 200);
+        } else {
+            $this->response([
+                'status' => FALSE,
+                'message' => 'Data kamar tidak ditemukan'
+            ], 404);
+        }
     }
 
     public function index_post()
@@ -58,11 +69,48 @@ class Kamar extends CI_Controller {
 
     public function index_put()
     {
+        $idkamar = $this->put('idkamar');
 
+        $datakamar = array(
+            'HARGA' => $this->put('harga'),
+            'FASILITAS' => $this->put('fasilitas'),
+            'KAPASITAS' => $this->put('kapasitas')
+        );
+
+        if ($this->kamar->updateKamar($datakamar, $idkamar)) {
+            $this->response([
+                'status' => TRUE,
+                'message' => 'Berhasil ubah kamar.',
+            ], 200);
+        } else {
+            $this->response([
+                'status' => FALSE,
+                'message' => 'Gagal ubah kamar.',
+            ], 400);
+        }
     }
 
     public function index_delete()
     {
+        $idkamar = $this->delete('idkamar');
 
+        if ($idkamar == null) {
+            $this->response([
+                'status' => FALSE,
+                'message' => "Gagal, ID kamar belum dimasukkan."
+            ], 400);
+        } else {
+            if ($this->kamar->deleteKamar($idkamar)) {
+                $this->response([
+                    'status' => TRUE,
+                    'message' => 'Berhasil hapus kamar.'
+                ], 200);
+            } else {
+                $this->response([
+                    'status' => FALSE,
+                    'message' => 'Gagal, ID kamar tidak ditemukan.'
+                ], 400);
+            }
+        }
     }
 }
