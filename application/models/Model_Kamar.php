@@ -1,6 +1,6 @@
 <?php
 
-class Model_Penginapan extends CI_Model {
+class Model_kamar extends CI_Model {
     
     public function getPenginapan($idpenginapan = null, $iduser = null)
     {
@@ -13,9 +13,9 @@ class Model_Penginapan extends CI_Model {
         }
     }
 
-    public function insertPenginapan($datapenginapan)
+    public function insertKamar($datakamar)
     {
-        $this->db->insert('penginapan', $datapenginapan);
+        $this->db->insert('kamar', $datakamar);
         return $this->db->affected_rows();
     }
 
