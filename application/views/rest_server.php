@@ -75,12 +75,12 @@
 
     <div id="body">
         <ol>
-            <li><a href="<?php echo site_url('api/penginapan'); ?>">User</a></li>
+            <li><a href="<?php echo site_url('api/useruser?iduser=1'); ?>">User</a></li>
             <li><a href="<?php echo site_url('api/penginapan'); ?>">Penginapan</a></li>
             <li><a href="<?php echo site_url('api/kamar'); ?>">Kamar</a></li>
             <li><a href="<?php echo site_url('api/transaksi'); ?>">Transaksi</a></li>
-            <li><a href="<?php echo site_url('api/penginapan'); ?>">Ulasan</a></li>
-            <li><a href="<?php echo site_url('api/penginapan'); ?>">Favorites</a></li>
+            <li><a href="<?php echo site_url('api/ulasan'); ?>">Ulasan</a></li>
+            <li><a href="<?php echo site_url('api/favorites'); ?>">Favorites</a></li>
         </ol>
 
     </div>
