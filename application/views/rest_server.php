@@ -75,7 +75,7 @@
 
     <div id="body">
         <ol>
-            <li><a href="<?php echo site_url('api/useruser?iduser=1'); ?>">User</a></li>
+            <li><a href="<?php echo site_url('api/user?iduser=1'); ?>">User</a></li>
             <li><a href="<?php echo site_url('api/penginapan'); ?>">Penginapan</a></li>
             <li><a href="<?php echo site_url('api/kamar'); ?>">Kamar</a></li>
             <li><a href="<?php echo site_url('api/transaksi'); ?>">Transaksi</a></li>
