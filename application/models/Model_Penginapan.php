@@ -7,7 +7,7 @@ class Model_Penginapan extends CI_Model {
         if ($idpenginapan != null) {
             return $this->db->get_where('penginapan', ['id_penginapan' => $idpenginapan])->result_array();
         } elseif ($iduser != null) {
-            return $this->db->get_where('penginapan', ['id_user' => $iduser])->result_array();
+            return $this->db->get_where('penginapan', ['id_users' => $iduser])->result_array();
         } else {
             return $this->db->get('penginapan')->result_array();
         }

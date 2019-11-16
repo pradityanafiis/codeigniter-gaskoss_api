@@ -4,7 +4,7 @@ class Model_User extends CI_Model {
 
     public function getUser($iduser)
     {
-        return $this->db->get_where('user', ['id_user' => $iduser])->result_array();
+        return $this->db->get_where('user', ['id_users' => $iduser])->result_array();
     }
 
     public function insertUser($datauser)

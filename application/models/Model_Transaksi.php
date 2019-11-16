@@ -7,7 +7,7 @@ class Model_Transaksi extends CI_Model {
         if ($idtransaksi != null) {
             return $this->db->get_where('transaksi', ['id_transaksi' => $idtransaksi])->result_array();
         } elseif ($iduser != null) {
-            return $this->db->get_where('transaksi', ['id_user' => $iduser])->result_array();
+            return $this->db->get_where('transaksi', ['id_users' => $iduser])->result_array();
         } else {
             return $this->db->get('transaksi')->result_array();
         }
