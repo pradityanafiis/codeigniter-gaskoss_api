@@ -47,10 +47,11 @@ class Kamar extends CI_Controller {
     public function index_post()
     {
         $datakamar = array(
-            'IDPENGINAPAN' => $this->post('idpenginapan'),
-            'HARGA' => $this->post('harga'),
-            'FASILITAS' => $this->post('fasilitas'),
-            'KAPASITAS' => $this->post('kapasitas')
+            'id_penginapan' => $this->post('idpenginapan'),
+            'harga' => $this->post('harga'),
+            'fasilitas' => $this->post('fasilitas'),
+            'kapasitas' => $this->post('kapasitas'),
+            'created_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->kamar->insertKamar($datakamar)) {
@@ -72,9 +73,10 @@ class Kamar extends CI_Controller {
         $idkamar = $this->put('idkamar');
 
         $datakamar = array(
-            'HARGA' => $this->put('harga'),
-            'FASILITAS' => $this->put('fasilitas'),
-            'KAPASITAS' => $this->put('kapasitas')
+            'harga' => $this->put('harga'),
+            'fasilitas' => $this->put('fasilitas'),
+            'kapasitas' => $this->put('kapasitas'),
+            'updated_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->kamar->updateKamar($datakamar, $idkamar)) {

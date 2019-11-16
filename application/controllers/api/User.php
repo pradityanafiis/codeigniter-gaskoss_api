@@ -47,10 +47,11 @@ class User extends CI_Controller {
     public function index_post()
     {
         $datauser = array(
-            'EMAIL' => $this->post('email'),
-            'PASSWORD' => sha1($this->post('password')),
-            'NAMA' => $this->post('nama'),
-            'TELEPON' => $this->post('telepon')
+            'email' => $this->post('email'),
+            'password' => sha1($this->post('password')),
+            'nama' => $this->post('nama'),
+            'telepon' => $this->post('telepon'),
+            'created_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->user->insertUser($datauser)) {
@@ -71,9 +72,10 @@ class User extends CI_Controller {
         $email = $this->put('email');
 
         $datauser = array(
-            'PASSWORD' => sha1($this->put('password')),
-            'NAMA' => $this->put('nama'),
-            'TELEPON' => $this->put('telepon')
+            'password' => sha1($this->put('password')),
+            'nama' => $this->put('nama'),
+            'telepon' => $this->put('telepon'),
+            'updated_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->user->updateUser($datauser, $email)) {

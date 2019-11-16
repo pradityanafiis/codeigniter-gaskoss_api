@@ -52,14 +52,15 @@ class Transaksi extends CI_Controller {
         }
 
         $datatransaksi = array(
-            'IDTRANSAKSI' => $idtransaksi,
-            'IDUSER' => $this->post('iduser'),
-            'IDKAMAR' => $this->post('idkamar'),
-            'TANGGALTRANSAKSI' => date('Y-m-d H:i:s'),
-            'TANGGALMASUK' => $this->post('tanggalmasuk'),
-            'TANGGALKELUAR' => $this->post('tanggalkeluar'),
-            'PEMBAYARAN' => $this->post('pembayaran'),
-            'STATUS' => '0'
+            'id_transaksi' => $idtransaksi,
+            'id_user' => $this->post('iduser'),
+            'id_kamar' => $this->post('idkamar'),
+            'tanggal_transaksi' => date('Y-m-d H:i:s'),
+            'tanggal_masuk' => $this->post('tanggalmasuk'),
+            'tanggal_keluar' => $this->post('tanggalkeluar'),
+            'pembayaran' => $this->post('pembayaran'),
+            'status' => '0',
+            'created_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->transaksi->insertTransaksi($datatransaksi)) {

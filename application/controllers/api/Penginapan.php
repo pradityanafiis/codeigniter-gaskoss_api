@@ -47,12 +47,13 @@ class Penginapan extends CI_Controller {
     public function index_post()
     {
         $datapenginapan = array(
-            'IDUSER' => $this->post('iduser'),
-            'NAMAPENGINAPAN' => $this->post('namapenginapan'),
-            'ALAMAT' => $this->post('alamat'),
-            'LATITUDE' => $this->post('latitude'),
-            'LONGITUDE' => $this->post('longitude'),
-            'TELEPONPENGINAPAN' => $this->post('teleponpenginapan')
+          'id_user' => $this->post('iduser'),
+          'nama' => $this->post('namapenginapan'),
+          'alamat' => $this->post('alamat'),
+          'latitude' => $this->post('latitude'),
+          'longitude' => $this->post('longitude'),
+          'telepon' => $this->post('teleponpenginapan'),
+          'created_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->penginapan->insertPenginapan($datapenginapan)) {
@@ -73,11 +74,12 @@ class Penginapan extends CI_Controller {
         $idpenginapan = $this->put('idpenginapan');
 
         $datapenginapan = array(
-            'NAMAPENGINAPAN' => $this->put('namapenginapan'),
-            'ALAMAT' => $this->put('alamat'),
-            'LATITUDE' => $this->put('latitude'),
-            'LONGITUDE' => $this->put('longitude'),
-            'TELEPONPENGINAPAN' => $this->put('teleponpenginapan')
+          'nama' => $this->put('namapenginapan'),
+          'alamat' => $this->put('alamat'),
+          'latitude' => $this->put('latitude'),
+          'longitude' => $this->put('longitude'),
+          'telepon' => $this->put('teleponpenginapan'),
+          'updated_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->penginapan->updatePenginapan($datapenginapan, $idpenginapan)) {
