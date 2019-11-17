@@ -1,6 +1,7 @@
 <?php
 use Restserver\Libraries\REST_Controller;
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set('Asia/Jakarta');
 
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
@@ -20,8 +21,8 @@ class Penginapan extends CI_Controller {
 
     public function index_get()
     {
-        $idpenginapan = $this->get('idpenginapan');
-        $iduser = $this->get('iduser');
+        $idpenginapan = $this->get('id_penginapan');
+        $iduser = $this->get('id_users');
 
         if ($idpenginapan != null) {
             $datapenginapan = $this->penginapan->getPenginapan($idpenginapan, null);
@@ -47,13 +48,14 @@ class Penginapan extends CI_Controller {
     public function index_post()
     {
         $datapenginapan = array(
-          'id_user' => $this->post('iduser'),
-          'nama' => $this->post('namapenginapan'),
+          'id_users' => $this->post('id_users'),
+          'nama' => $this->post('nama'),
           'alamat' => $this->post('alamat'),
           'latitude' => $this->post('latitude'),
           'longitude' => $this->post('longitude'),
-          'telepon' => $this->post('teleponpenginapan'),
-          'created_at' => date('Y-m-d H:i:s')
+          'telepon' => $this->post('telepon'),
+          'created_at' => date('Y-m-d H:i:s'),
+          'updated_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->penginapan->insertPenginapan($datapenginapan)) {
@@ -71,14 +73,14 @@ class Penginapan extends CI_Controller {
 
     public function index_put()
     {
-        $idpenginapan = $this->put('idpenginapan');
+        $idpenginapan = $this->put('id_penginapan');
 
         $datapenginapan = array(
-          'nama' => $this->put('namapenginapan'),
+          'nama' => $this->put('nama'),
           'alamat' => $this->put('alamat'),
           'latitude' => $this->put('latitude'),
           'longitude' => $this->put('longitude'),
-          'telepon' => $this->put('teleponpenginapan'),
+          'telepon' => $this->put('telepon'),
           'updated_at' => date('Y-m-d H:i:s')
         );
 
@@ -97,7 +99,7 @@ class Penginapan extends CI_Controller {
 
     public function index_delete()
     {
-        $idpenginapan = $this->delete('idpenginapan');
+        $idpenginapan = $this->delete('id_penginapan');
 
         if ($idpenginapan == null) {
             $this->response([

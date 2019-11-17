@@ -20,13 +20,16 @@ class Kamar extends CI_Controller {
 
     public function index_get()
     {
-        $idkamar = $this->get('idkamar');
-        $idpenginapan = $this->get('idpenginapan');
+        $idkamar = $this->get('id_kamar');
+        $idpenginapan = $this->get('id_penginapan');
+        $iduser = $this->get('id_users');
 
         if ($idkamar != null) {
-            $datakamar = $this->kamar->getKamar($idkamar, null);
+            $datakamar = $this->kamar->getKamar($idkamar, null, null);
         } elseif ($idpenginapan != null) {
-            $datakamar = $this->kamar->getKamar(null, $idpenginapan);
+            $datakamar = $this->kamar->getKamar(null, $idpenginapan, null);
+        } elseif ($iduser != null) {
+            $datakamar = $this->kamar->getKamar(null, null, $iduser);
         } else {
             $datakamar = $this->kamar->getKamar();
         }
@@ -47,11 +50,13 @@ class Kamar extends CI_Controller {
     public function index_post()
     {
         $datakamar = array(
-            'id_penginapan' => $this->post('idpenginapan'),
+            'id_penginapan' => $this->post('id_penginapan'),
+            'tipe' => $this->post('tipe'),
             'harga' => $this->post('harga'),
             'fasilitas' => $this->post('fasilitas'),
             'kapasitas' => $this->post('kapasitas'),
-            'created_at' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         );
 
         if ($this->kamar->insertKamar($datakamar)) {
@@ -65,14 +70,14 @@ class Kamar extends CI_Controller {
                 'message' => 'Gagal menambahkan kamar.',
             ], 400);
         }
-
     }
 
     public function index_put()
     {
-        $idkamar = $this->put('idkamar');
+        $idkamar = $this->put('id_kamar');
 
         $datakamar = array(
+            'tipe' => $this->put('tipe'),
             'harga' => $this->put('harga'),
             'fasilitas' => $this->put('fasilitas'),
             'kapasitas' => $this->put('kapasitas'),
@@ -94,7 +99,7 @@ class Kamar extends CI_Controller {
 
     public function index_delete()
     {
-        $idkamar = $this->delete('idkamar');
+        $idkamar = $this->delete('id_kamar');
 
         if ($idkamar == null) {
             $this->response([
