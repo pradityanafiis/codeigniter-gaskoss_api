@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/user/public_html/penginapan-api
-    - /bin/cp -R $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
